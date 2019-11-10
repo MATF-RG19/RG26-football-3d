@@ -1,8 +1,7 @@
-# RG26-football-3d
-F⚽️⚽️TBALL 3D
+# F⚽️⚽️TBALL 3D
 
 Ideja igrice je da korisnik upravlja fudbalskom loptom po terenu i
-skuplja poene. 
+skuplja poene.<br>
 Cilj je skupiti sto vise poena i izbeci prepreke.
 
 Pokretanje iz terminala:
@@ -15,3 +14,4 @@ Taster|Aktivnost
 <kbd>A</kbd>|Rotacija levo
 <kbd>D</kbd>|Rotacija desno
 <kbd>R</kbd>|Restart
+<kbd>Esc</kbd>|Izlaz
