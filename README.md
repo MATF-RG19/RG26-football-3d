@@ -5,7 +5,7 @@ Ideja igrice je da korisnik upravlja fudbalskom loptom po terenu i
 skuplja poene. 
 Cilj je skupiti sto vise poena i izbeci prepreke.
 
-Pokretanje igrice iz terminala:
+Pokretanje iz terminala:
 `make makerun`
 
 Taster|Aktivnost
