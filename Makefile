@@ -1,22 +1,21 @@
 PROGRAM = football
 CC      = gcc
-CFLAGS  = -g -Wall -Wextra -I/usr/X11R6/include -I/usr/pkg/include
-LDFLAGS = -L/usr/X11R6/lib -L/usr/pkg/lib
-LDLIBS  = -lglut -lGLU -lGL -lm
+FLAGS  = -g -Wall -Wextra -I/usr/X11R6/lib -I/usr/pkg/lib
+SRC = code/main.c code/ball.c code/base.c code/callback.c code/camera.c
+HDR = code/main.c code/ball.h code/base.h code/callback.h code/camera.h
+LIBS  = -lglut -lGLU -lGL -lm
 
-$(PROGRAM): main.o
-	$(CC) $(LDFLAGS) -o $(PROGRAM) main.o $(LDLIBS)
+$(PROGRAM): $(SRC) $(HDR) 
+	    $(CC) $(FLAGS) -o $(PROGRAM) $(SRC) $(LIBS)
 
-.PHONY: run makerun clean dist
+.PHONY: play run clean
 
-run:
+play:
 	./$(PROGRAM) 
 
-makerun:
-	make && make run
+run:
+	make && make play
 
 clean:
-	-rm *.o $(PROGRAM) *core
+	rm -f *~ code/*~ gifs/*~
 
-dist: clean
-	-tar -chvj -C .. -f ../$(PROGRAM).tar.bz2 $(PROGRAM)
