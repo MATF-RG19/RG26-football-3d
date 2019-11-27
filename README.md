@@ -5,13 +5,18 @@ skuplja poene.<br>
 Cilj je skupiti sto vise poena i izbeci prepreke.
 
 Pokretanje iz terminala:
-`make makerun`
+`make play`
+
+Kompilacija i pokretanje:
+`make run`
 
 Taster|Aktivnost
 ------| ------
-<kbd>W</kbd>|Rotacija napred
-<kbd>S</kbd>|Rotacija nazad
-<kbd>A</kbd>|Rotacija levo
-<kbd>D</kbd>|Rotacija desno
-<kbd>R</kbd>|Restart
-<kbd>Esc</kbd>|Izlaz
+<kbd>W</kbd>|Camera zoom in
+<kbd>S</kbd>|Camera zoom out
+<kbd>A</kbd>|Rotation right
+<kbd>D</kbd>|Rotation left
+<kbd>Q</kbd>|Camera up
+<kbd>E</kbd>|Camera down
+<kbd>R</kbd>|Reset camera
+<kbd>Esc</kbd>|Exit
