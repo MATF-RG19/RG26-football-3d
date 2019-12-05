@@ -10,13 +10,15 @@ Pokretanje iz terminala:
 Kompilacija i pokretanje:
 `make run`
 
-Taster|Aktivnost
+Taster :video_game:|Aktivnost
 ------| ------
-<kbd>W</kbd>|Camera zoom in
-<kbd>S</kbd>|Camera zoom out
-<kbd>A</kbd>|Rotation right
-<kbd>D</kbd>|Rotation left
-<kbd>Q</kbd>|Camera up
-<kbd>E</kbd>|Camera down
+<kbd>W</kbd>|Ball forward
+<kbd>S</kbd>|Ball backward
+<kbd>A</kbd>|Camera right
+<kbd>D</kbd>|Camera left
+<kbd>J</kbd>|Camera zoom in
+<kbd>L</kbd>|Camera zoom out
+<kbd>I</kbd>|Camera up
+<kbd>K</kbd>|Camera down
 <kbd>R</kbd>|Reset camera
 <kbd>Esc</kbd>|Exit
