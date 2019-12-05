@@ -3,7 +3,7 @@
 int main(int argc, char** argv)
 {
     // Pokretanje Gluta
-    set_initialization(&argc, argv);
+    set_init(&argc, argv);
     
     // Pravljenje prozora
     create_window();
@@ -19,7 +19,7 @@ int main(int argc, char** argv)
     
     // Pravljenje lopte
     make_ball();
-    
+  
     // Glavna petlja Gluta
     glutMainLoop();
     

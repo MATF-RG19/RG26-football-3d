@@ -4,16 +4,16 @@
 #include "main.h"
 
 // Opis prozora
-#define WIN_SIZE 500
+#define WIN_WIDTH 640
+#define WIN_HEIGHT 480
 #define WIN_POS 100
 
 // Opis osvetljenja
 #define SHININESS 100
 
 // Bazne funkcije
-void set_initialization(int*, char**);
+void set_init(int*, char**);
 void create_window(void);
 void set_light(void);
-void set_terrain(void);
 
 #endif 

@@ -1,8 +1,8 @@
 PROGRAM = football
 CC      = gcc
 FLAGS  = -g -Wall -Wextra -I/usr/X11R6/lib -I/usr/pkg/lib
-SRC = code/main.c code/ball.c code/base.c code/callback.c code/camera.c
-HDR = code/main.c code/ball.h code/base.h code/callback.h code/camera.h
+SRC = code/main.c code/ball.c code/base.c code/callback.c code/camera.c code/terrain.c
+HDR = code/main.h code/ball.h code/base.h code/callback.h code/camera.h code/terrain.h
 LIBS  = -lglut -lGLU -lGL -lm
 
 $(PROGRAM): $(SRC) $(HDR) 

@@ -21,14 +21,23 @@ void on_idle(void)
             keyboard &= ~RESET;
         }
     }
-
-    // Kretaneje kamere napred, nazad, 
-    // gore, dole, desno, levo
+    
+    // Lopta se krece napred
     if (keyboard & FORWARD){
-        camera_forward();
+        ball_forward();
     }
-    if (keyboard & BACK){
-        camera_back();
+    
+    // Lopta se krece nazad
+    if (keyboard & BACKWARD){
+        ball_backward();
+    }
+
+    // Kretaneje kamere napred, nazad, gore, dole, desno, levo
+    if (keyboard & ZOOM_IN){
+        camera_zoom_in();
+    }
+    if (keyboard & ZOOM_OUT){
+        camera_zoom_out();
     }
     if (keyboard & UP){
         camera_up();
@@ -36,13 +45,20 @@ void on_idle(void)
     if (keyboard & DOWN){
         camera_down();
     }
+    
+    // Rotacija lopte levo 
     if (keyboard & LEFT){
-        camera_left();
-    } else camera_right();
-   
+        if (keyboard & BACKWARD){
+            camera_left();
+        } else camera_right();
+    }
+    
+    // Rotacija lopte desno
     if (keyboard & RIGHT){
-        camera_right(); 
-    } else camera_left();
+        if (keyboard & BACKWARD){
+            camera_right();
+        } else camera_left();
+    }
     
     // Refresh window
     glutPostRedisplay();
@@ -70,24 +86,35 @@ void on_button_push(unsigned char key, int x, int y)
         keyboard |= RIGHT;
         break;
     
-    // Kamera se krece napred, nazad, dole, gore
+    // Lopta ide napred, nazad
     case 'w':
     case 'W':
         keyboard |= FORWARD;
         break;
-    
+        
     case 's':
     case 'S':
-        keyboard |= BACK;
+        keyboard |= BACKWARD;
         break;
     
-    case 'e':
-    case 'E':
+    // Kamera se krece napred, nazad, dole, gore
+    case 'l':
+    case 'L':
+        keyboard |= ZOOM_IN;
+        break;
+    
+    case 'j':
+    case 'J':
+        keyboard |= ZOOM_OUT;
+        break;
+    
+    case 'k':
+    case 'K':
         keyboard |= DOWN;
         break;
     
-    case 'q':
-    case 'Q':
+    case 'i':
+    case 'I':
         keyboard |= UP;
         break;
     
@@ -109,35 +136,47 @@ void on_button_pull(unsigned char key, int x, int y)
     case ESC:
         break;
     
-    // // Lopta se vise ne rotira levo, desno
+    // Lopta se vise ne rotira levo, desno
     case 'd':
     case 'D':
-        keyboard &= ~RIGHT;
+        keyboard &= ~RIGHT;  
         break;
         
     case 'a':
     case 'A':
         keyboard &= ~LEFT;
         break;
+        
+    case 's':
+    case 'S':
+        // Lopta vise ne ide nazad
+        keyboard &= ~BACKWARD;
+        break;
     
-    // Kamera se vise ne krece napred, nazad, dole, gore
     case 'w':
     case 'W':
+        // Lopta vise ne ide napred
         keyboard &= ~FORWARD;
         break;
     
-    case 's':
-    case 'S':
-        keyboard &= ~BACK;
+    // Kamera se vise ne krece napred, nazad, dole, gore
+    case 'l':
+    case 'L':
+        keyboard &= ~ZOOM_IN;
         break;
     
-    case 'e':
-    case 'E':
+    case 'j':
+    case 'J':
+        keyboard &= ~ZOOM_OUT;
+        break;
+    
+    case 'k':
+    case 'K':    
         keyboard &= ~DOWN;
         break;
     
-    case 'q':
-    case 'Q':
+    case 'i':
+    case 'I':
         keyboard &= ~UP;
         break;
         
@@ -165,11 +204,12 @@ void on_display(void)
     glLoadIdentity();
     
     // Polozaj svetla
-    GLint light_position[] = {0, 0, 0, 1};
+    GLint light_position[] = {0, 0, 1, 0};
     glLightiv(GL_LIGHT0, GL_POSITION, light_position);
     
     // Racunanje pozicije kamere
     repair_camera();
+    
     // Postavljanje vidnih parametara
     gluLookAt(camera.x, camera.y, camera.z, 
               ball.x,   ball.y,   ball.z,   

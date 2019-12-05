@@ -3,7 +3,7 @@
 
 #include "main.h"
 
-// ASCII kod ESC tastera
+// ASCII kod nekih tastera    
 #define ESC 27
 
 // Nekoriscene  varijable
@@ -21,21 +21,17 @@
 
 // Bafer bitovskih tastera
 #define EMPTY 0
-#define FORWARD 1
-#define BACK 2
+#define ZOOM_IN 1
+#define ZOOM_OUT 2
 #define UP 4
 #define DOWN 8
 #define LEFT 16
 #define RIGHT 32
 #define RESET 64
+#define FORWARD 128
+#define BACKWARD 256
 
 int keyboard;
-
-// Struktura lopte sa koordinatama x,y,z i radijusm r
-extern struct ball ball;
-
-// Struktura kamere sa koordinatama x,y,z
-extern struct camera camera;
 
 // Callback funkcije
 void set_callback(void);
@@ -44,5 +40,6 @@ void on_button_push(unsigned char, int, int);
 void on_button_pull(unsigned char, int, int);
 void on_reshape(int, int);
 void on_display(void);
+void set_terrain(void);
 
 #endif 

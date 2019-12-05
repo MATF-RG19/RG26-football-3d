@@ -10,7 +10,7 @@ void make_camera(void)
     camera.theta = CAMERA_THETA;
     camera.d_theta = CAMERA_THETA_D;
     
-    //Postavljanje razlike
+    // Postavljanje razlike
     diff.r = DIFF_BEGIN;
     diff.phi = DIFF_BEGIN;
     diff.theta = DIFF_BEGIN;
@@ -26,12 +26,13 @@ void repair_camera(void)
 
 int reset_camera(void)
 {
+    // Animacija resetovanja kamere
     if (diff.r || diff.phi || diff.theta){
         if (diff.r > DIFF_BEGIN){
-            camera_forward();
+            camera_zoom_in();
         } 
         else if (diff.r < DIFF_BEGIN){
-            camera_back();
+            camera_zoom_out();
         }
         
         diff.phi = DIFF_BEGIN;
@@ -56,7 +57,7 @@ void camera_left(void)
     
     // Popravka jer phi = [-pi, pi)
     if (camera.phi < CAMERA_PHI_MIN){
-        camera.phi += CAMERA_PHI_POM;
+        camera.phi += CAMERA_PHI_AZIMUTH;
         diff.phi = (camera.phi - CAMERA_PHI) / CAMERA_PHI_D;
     }
 }
@@ -69,7 +70,7 @@ void camera_right(void)
     
     // Popravka jer phi = [-pi, pi)
     if (camera.phi >= CAMERA_PHI_MAX){
-        camera.phi -= CAMERA_PHI_POM;
+        camera.phi -= CAMERA_PHI_AZIMUTH;
         diff.phi = (camera.phi - CAMERA_PHI) / CAMERA_PHI_D;
     }
 }
@@ -100,26 +101,26 @@ void camera_down(void)
     }
 }
 
-void camera_forward(void)
+void camera_zoom_in(void)
 {
     // Kamera ide napred
     camera.r -= camera.d_r;
     diff.r--;
     
-    // Popravka jer r = [3, 20]
+    // Popravka jer r = [3, 23]
     if (camera.r < CAMERA_RAD_MIN){
         camera.r = CAMERA_RAD_MIN;
         diff.r++;
     }
 }
 
-void camera_back(void)
+void camera_zoom_out(void)
 {
     // Kamera ide nazad
     camera.r += camera.d_r;
     diff.r++;
     
-    // Popravka jer r = [3, 20]
+    // Popravka jer r = [3, 23]
     if (camera.r > CAMERA_RAD_MAX){
         camera.r = CAMERA_RAD_MAX;
         diff.r--;
