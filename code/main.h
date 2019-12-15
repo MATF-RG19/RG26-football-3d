@@ -6,6 +6,7 @@
 #include "ball.h"
 #include "camera.h"
 #include "callback.h"
+#include "terrain.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

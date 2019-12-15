@@ -60,6 +60,13 @@ void on_idle(void)
         } else camera_left();
     }
     
+    // Skok lopte
+    if (keyboard & JUMP){
+        if (ball_jump() == JUMP_END){
+            keyboard &= ~JUMP;
+        }
+    }
+    
     // Refresh window
     glutPostRedisplay();
 }
@@ -123,6 +130,17 @@ void on_button_push(unsigned char key, int x, int y)
     case 'R':
         keyboard |= RESET;
         break;
+    
+    // Skok lopte
+    case SPACE:
+        keyboard |= JUMP;
+        break;
+        
+    case 'f':
+    case 'F':
+        // Preko celog ekrana
+        glutFullScreenToggle();
+        break;    
     }
 }
 
@@ -182,6 +200,9 @@ void on_button_pull(unsigned char key, int x, int y)
         
     case 'r':
     case 'R':
+        break;
+        
+    case SPACE:
         break;
     }
 }

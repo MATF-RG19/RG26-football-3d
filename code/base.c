@@ -13,8 +13,9 @@ void create_window(void)
     glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
     glutInitWindowPosition(WIN_POS, WIN_POS);
     glutCreateWindow("Football 3D");
+    glutFullScreen();
     
-    // Ciscenje prozora
+    // Ciscenje prozora, boja pozadine
     glClearColor(0,0,0,0);
 }
 
@@ -25,7 +26,7 @@ void set_light(void)
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     
-    //Ambijentalna, difuzna i spekularna boja svetla scene
+    // Ambijentalna, difuzna i spekularna boja svetla scene
     GLfloat light_ambient[] = {0.3f, 0.3f, 0.3f, 1.0f};
     GLfloat light_diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
     GLfloat light_specular[] = {0.8f, 0.8f, 0.8f, 1.0f};

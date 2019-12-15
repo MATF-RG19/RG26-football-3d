@@ -5,6 +5,7 @@
 
 // ASCII kod nekih tastera    
 #define ESC 27
+#define SPACE 32
 
 // Nekoriscene  varijable
 #define CANCEL(x) (void)x
@@ -30,6 +31,7 @@
 #define RESET 64
 #define FORWARD 128
 #define BACKWARD 256
+#define JUMP 512
 
 int keyboard;
 

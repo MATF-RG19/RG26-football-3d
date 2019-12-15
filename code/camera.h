@@ -4,7 +4,7 @@
 #include "main.h"
 
 // Pocetni sferni parametri
-#define CAMERA_RAD 7
+#define CAMERA_RAD 10
 #define CAMERA_PHI 0
 #define CAMERA_THETA (M_PI/6)
 

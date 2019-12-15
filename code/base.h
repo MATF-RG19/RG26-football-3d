@@ -7,9 +7,7 @@
 #define WIN_WIDTH 640
 #define WIN_HEIGHT 480
 #define WIN_POS 100
-
-// Opis osvetljenja
-#define SHININESS 100
+#define SHININESS 100 // svetlo
 
 // Bazne funkcije
 void set_init(int*, char**);
