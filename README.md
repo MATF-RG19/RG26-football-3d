@@ -10,7 +10,7 @@ Pokretanje iz terminala:
 Kompilacija i pokretanje:
 `make run`
 
-Taster :video_game:|Aktivnost
+Button :video_game:|Activity
 ------| ------
 <kbd>W</kbd>|Ball forward
 <kbd>S</kbd>|Ball backward
@@ -21,4 +21,6 @@ Taster :video_game:|Aktivnost
 <kbd>I</kbd>|Camera up
 <kbd>K</kbd>|Camera down
 <kbd>R</kbd>|Reset camera
+<kbd>F</kbd>|Fullscreen
+<kbd>SPACE</kbd>|Ball jump
 <kbd>Esc</kbd>|Exit
