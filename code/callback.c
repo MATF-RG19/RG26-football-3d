@@ -9,6 +9,10 @@ void set_callback(void)
     glutReshapeFunc(on_reshape);
     glutDisplayFunc(on_display);
     
+    // Upravljanje kamerom pomocu misa
+    glutPassiveMotionFunc(on_mouse_motion);
+    glutSetCursor(GLUT_CURSOR_NONE);
+    
     // Na pocetku nije nista pritisnuto
     keyboard = EMPTY;
 }
@@ -73,10 +77,6 @@ void on_idle(void)
 
 void on_button_push(unsigned char key, int x, int y)
 {
-    // Zanemaruje se mesto pritiska
-    CANCEL(x);
-    CANCEL(y);
-    
     switch (key){
     case ESC:
         // Prekid programa
@@ -146,10 +146,6 @@ void on_button_push(unsigned char key, int x, int y)
 
 void on_button_pull(unsigned char key, int x, int y)
 {
-    // Zanemaruje se mesto pritiska
-    CANCEL(x);
-    CANCEL(y);
-    
     switch (key){
     case ESC:
         break;
@@ -204,6 +200,42 @@ void on_button_pull(unsigned char key, int x, int y)
         
     case SPACE:
         break;
+    }
+}
+
+float camera_x = 0; 
+float camera_y = 0;
+
+// Funkcija za upravljane kamerom pomocu misa
+void on_mouse_motion(int x, int y)
+{
+    float dx;
+    float dy;
+    int curr_win_width = glutGet(GLUT_WINDOW_WIDTH);
+    int curr_win_height = glutGet(GLUT_WINDOW_WIDTH);
+    
+    if (x == curr_win_width/2 && y == curr_win_height/2) 
+        return;
+    
+    dx = x - curr_win_width/2;
+    dy = y - curr_win_height/2;
+    
+    // fikisranje kursora
+    glutWarpPointer(curr_win_width/2, curr_win_height/2);
+    
+    camera_x += dx;
+    camera_y -= dy;
+   
+    if (dx > 0) {
+        camera_left();
+    } else if (dx < 0) {
+        camera_right();
+    }
+    
+    if (dy > 0) {
+        camera_up();
+    } else if (dy < 0) {
+        camera_down();
     }
 }
 

@@ -3,12 +3,17 @@
 
 #include "main.h"
 
-// Opis lopte
-#define B_CENTER 0
+// Startna pozicija lopte
+#define BALL_X 35    
+#define BALL_Y 0
+#define BALL_Z 0
+
+//Precnik lopte
 #define B_RADIUS 1
-#define B_PRECISION 6
+#define B_PRECISION 26
 #define SHININESS 100
-#define MOVE 10
+// Brzina kretanja lopte
+#define MOVE 3
 
 // Opis skoka i rotacije
 #define ANGLE_START 0

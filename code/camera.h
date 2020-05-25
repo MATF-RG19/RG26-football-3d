@@ -3,23 +3,25 @@
 
 #include "main.h"
 
-// Pocetni sferni parametri
-#define CAMERA_RAD 10
+// Startna pozicija kamere
+#define CAMERA_RAD 15
 #define CAMERA_PHI 0
 #define CAMERA_THETA (M_PI/6)
 
-// Promena parametara
-#define CAMERA_RAD_D 0.05
+// Brzina kretanja kamere (zoom in/out speed)
+#define CAMERA_RAD_D 0.1 
+// Brzina rotiranja kamere levo-desno
 #define CAMERA_PHI_D (M_PI/120)
-#define CAMERA_THETA_D (M_PI/320)
+// Brzina kretanja kamere gore-dole
+#define CAMERA_THETA_D (M_PI/320) 
 
-// Min vrednosti parametara
+// Min zoom in vrednost kamere
 #define CAMERA_RAD_MIN 3
 #define CAMERA_PHI_MIN -M_PI
 #define CAMERA_THETA_MIN 0
 
-// Max vrednosti parametara
-#define CAMERA_RAD_MAX 23
+// Max zoom out vrednost kamere
+#define CAMERA_RAD_MAX 100
 #define CAMERA_PHI_MAX M_PI
 #define CAMERA_THETA_MAX (M_PI/2-M_PI/400)
 

@@ -7,13 +7,10 @@
 #define ESC 27
 #define SPACE 32
 
-// Nekoriscene  varijable
-#define CANCEL(x) (void)x
-
 // Opis perspektive
 #define PERS_ANGLE 60
 #define PERS_NEAR 1
-#define PERS_FAR 100
+#define PERS_FAR 250
 
 // Opis pogleda
 #define NORM_X 0
@@ -36,6 +33,7 @@
 int keyboard;
 
 // Callback funkcije
+void on_mouse_motion(int, int);
 void set_callback(void);
 void on_idle(void);
 void on_button_push(unsigned char, int, int);

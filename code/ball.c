@@ -3,9 +3,9 @@
 void make_ball(void)
 {
     // Centar, poluprecnik i preciznost lopte
-    ball.x = B_CENTER;
-    ball.y = B_CENTER;
-    ball.z = B_CENTER;
+    ball.x = BALL_X;
+    ball.y = BALL_Y;
+    ball.z = BALL_Z;
     ball.precision = B_PRECISION;
     ball.radius = B_RADIUS;
     
