@@ -5,5 +5,6 @@
 
 // Funkcije za teren
 void set_terrain(void);
+void make_scene(void);
 
 #endif

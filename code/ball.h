@@ -8,12 +8,13 @@
 #define BALL_Y 0
 #define BALL_Z 0
 
-//Precnik lopte
+// Precnik lopte
 #define B_RADIUS 1
-#define B_PRECISION 26
+#define B_SLICES 25
+#define B_STACKS 25
 #define SHININESS 100
 // Brzina kretanja lopte
-#define MOVE 3
+#define MOVE 6
 
 // Opis skoka i rotacije
 #define ANGLE_START 0
@@ -23,29 +24,9 @@
 #define MAT_DIM 16
 #define ROT_Z 0
 
-enum {
-    JUMP_FALSE, 
-    JUMP_END
-};
-
-enum {
-    ROT_FORWARD = 1,
-    ROT_BACKWARD = -1
-};
-
-// Struktura lopte
-struct ball{
-    GLdouble x, y, z;
-    GLdouble precision;
-    GLdouble radius;
-    GLdouble jump_p;
-} ball;
-
-// Struktura rotacije
-struct rotation{
-    GLdouble x, y;
-    GLdouble matrix[MAT_DIM];
-}rotation;
+// Za kretanje
+#define ROT_FORWARD 1
+#define ROT_BACKWARD -1
 
 // Funkcije za loptu
 void make_ball(void);
@@ -54,5 +35,26 @@ void ball_forward(void);
 void ball_backward(void);
 int ball_jump(void);
 void ball_roll(int);
+
+enum {
+    JUMP_FALSE, 
+    JUMP_END
+};
+
+// Struktura lopte
+struct ball{
+    GLdouble x, y, z;
+    GLdouble slices;
+    GLdouble stacks;
+    GLdouble radius;
+    GLdouble jump_p;
+    GLUquadricObj* quad;
+} ball;
+
+// Struktura rotacije
+struct rotation{
+    GLdouble x, y;
+    GLdouble matrix[MAT_DIM];
+}rotation;
 
 #endif 

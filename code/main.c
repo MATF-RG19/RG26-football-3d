@@ -19,6 +19,9 @@ int main(int argc, char** argv)
     
     // Pravljenje lopte
     make_ball();
+    
+    // Inicijalizacija tekstura
+    init_textures();
   
     // Glavna petlja Gluta
     glutMainLoop();

@@ -4,8 +4,8 @@ void set_callback(void)
 {
     // Postavljanje callback funkcija
     glutIdleFunc(on_idle);
-    glutKeyboardFunc(on_button_push);
-    glutKeyboardUpFunc(on_button_pull);
+    glutKeyboardFunc(on_button_pressed);
+    glutKeyboardUpFunc(on_button_released);
     glutReshapeFunc(on_reshape);
     glutDisplayFunc(on_display);
     
@@ -75,7 +75,7 @@ void on_idle(void)
     glutPostRedisplay();
 }
 
-void on_button_push(unsigned char key, int x, int y)
+void on_button_pressed(unsigned char key, int x, int y)
 {
     switch (key){
     case ESC:
@@ -143,12 +143,12 @@ void on_button_push(unsigned char key, int x, int y)
         break;    
     }
 }
-
-void on_button_pull(unsigned char key, int x, int y)
+ 
+void on_button_released(unsigned char key, int x, int y)
 {
     switch (key){
     case ESC:
-        break;
+        break; 
     
     // Lopta se vise ne rotira levo, desno
     case 'd':
@@ -214,9 +214,11 @@ void on_mouse_motion(int x, int y)
     int curr_win_width = glutGet(GLUT_WINDOW_WIDTH);
     int curr_win_height = glutGet(GLUT_WINDOW_WIDTH);
     
+    // Ako se mis ne mrda
     if (x == curr_win_width/2 && y == curr_win_height/2) 
         return;
     
+    // Razlika koordinata
     dx = x - curr_win_width/2;
     dy = y - curr_win_height/2;
     

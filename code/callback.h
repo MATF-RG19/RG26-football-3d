@@ -10,7 +10,7 @@
 // Opis perspektive
 #define PERS_ANGLE 60
 #define PERS_NEAR 1
-#define PERS_FAR 250
+#define PERS_FAR 1024
 
 // Opis pogleda
 #define NORM_X 0
@@ -36,8 +36,8 @@ int keyboard;
 void on_mouse_motion(int, int);
 void set_callback(void);
 void on_idle(void);
-void on_button_push(unsigned char, int, int);
-void on_button_pull(unsigned char, int, int);
+void on_button_pressed(unsigned char, int, int);
+void on_button_released(unsigned char, int, int);
 void on_reshape(int, int);
 void on_display(void);
 void set_terrain(void);

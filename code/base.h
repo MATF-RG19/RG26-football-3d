@@ -3,7 +3,7 @@
 
 #include "main.h"
 
-// Opis prozora
+// Dimenzije prozora
 #define WIN_WIDTH 640
 #define WIN_HEIGHT 480
 #define WIN_POS 100

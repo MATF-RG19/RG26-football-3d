@@ -1,39 +1,41 @@
-#include "ball.h"
+#include "ball.h"  
 
 void make_ball(void)
 {
-    // Centar, poluprecnik i preciznost lopte
+    // Koordinate fudbalske lopte
     ball.x = BALL_X;
     ball.y = BALL_Y;
     ball.z = BALL_Z;
-    ball.precision = B_PRECISION;
-    ball.radius = B_RADIUS;
     
+    // quadric za fudbalsku loptu
+    ball.quad = gluNewQuadric();
+    gluQuadricDrawStyle(ball.quad, GLU_FILL);
+    gluQuadricTexture(ball.quad, GL_TRUE);
+    
+    // Matrica rotacije se inicijalizuje na jedinicnu
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glGetDoublev(GL_MODELVIEW_MATRIX, rotation.matrix);
 }
 
-void set_ball(void)
+void set_ball(void) 
 {
-    // Ambijentalna, difuzna i spekularna boja svetla lopte
-    GLfloat ambient_light[] = {0.7f, 0.7f, 0.7f, 1.0f};
-    GLfloat diffuse_light[] = {0.7f, 0.7f, 0.7f, 1.0f};
-    GLfloat specular_light[] = {1.0f, 1.0f, 1.0f, 1.0f};
-    
-    // Postavljanje svojstava materijala
-    glMaterialfv(GL_FRONT, GL_AMBIENT, ambient_light);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse_light);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, specular_light);
-    glMateriali(GL_FRONT, GL_SHININESS, SHININESS);
-    
-    // Pomeranje lopte
+    // Transliranje lopte
     glTranslated(ball.x, ball.y, ball.z);
     
+    // Za realniji izgled kretanja lopte po terenu
     glMultMatrixd(rotation.matrix);
     
-    // Crtanje lopte
-    glutSolidSphere(ball.radius, ball.precision, ball.precision);
+    // Ukljucivanje teksture za loptu
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[BALL_TEXTURE_NUM]);
+    glPushMatrix();
+        // Pravimo fudbalsku loptu
+        gluSphere(ball.quad, B_RADIUS, B_SLICES, B_STACKS);
+    glPopMatrix();
+    
+    // iskljucivanje teksture
+    glDisable(GL_TEXTURE_2D);
 }
 
 void ball_forward(void)
@@ -96,4 +98,3 @@ void ball_roll(int direction)
     
     glPopMatrix();
 }
-

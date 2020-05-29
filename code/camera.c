@@ -1,5 +1,5 @@
 #include "camera.h"
-
+ 
 void make_camera(void)
 {
     // Postavljanje radijusa i uglova
@@ -15,14 +15,14 @@ void make_camera(void)
     diff.phi = DIFF_BEGIN;
     diff.theta = DIFF_BEGIN;
 }
-
+ 
 void repair_camera(void)
 {
     // Prevodjenje sfernih koordinata u Dekartove
     camera.x = ball.x + camera.r * cos(camera.theta) * cos(camera.phi);
     camera.y = ball.y + camera.r * cos(camera.theta) * sin(camera.phi);
     camera.z = ball.z + camera.r * sin(camera.theta);
-}
+} 
 
 int reset_camera(void)
 {
@@ -107,7 +107,7 @@ void camera_zoom_in(void)
     camera.r -= camera.d_r;
     diff.r--;
     
-    // Popravka jer r = [3, 23]
+    // Popravka jer r = [3, 100]
     if (camera.r < CAMERA_RAD_MIN){
         camera.r = CAMERA_RAD_MIN;
         diff.r++;
@@ -120,7 +120,7 @@ void camera_zoom_out(void)
     camera.r += camera.d_r;
     diff.r++;
     
-    // Popravka jer r = [3, 23]
+    // Popravka jer r = [3, 100]
     if (camera.r > CAMERA_RAD_MAX){
         camera.r = CAMERA_RAD_MAX;
         diff.r--;
