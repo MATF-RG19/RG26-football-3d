@@ -1,10 +1,8 @@
 PROGRAM = football
 CC      = gcc
-FLAGS  = -g -Wall 
-SRC = main.c ball.c base.c callback.c camera.c terrain.c textures.c
-HDR = main.h ball.h base.h callback.h camera.h terrain.h textures.h
+FLAGS  = -g -Wall
 LIBS  = -lglut -lGLU -lGL -lm
-OBJS = main.o ball.o base.o callback.o camera.o terrain.o image.o textures.o 
+OBJS = main.o ball.o display.o callback.o camera.o terrain.o image.o textures.o axis.o
 
 $(PROGRAM): $(OBJS) 
 	    $(CC) $(FLAGS) -o $(PROGRAM) $(OBJS) $(LIBS)
@@ -15,8 +13,8 @@ main.o: main.c main.h
 ball.o: ball.c ball.h
 	$(CC) -c $(FLAGS) ball.c -o ball.o $(LIBS) $(FLAGS)
 	
-base.o: base.c base.h
-	$(CC) -c $(FLAGS) base.c -o base.o $(LIBS) $(FLAGS)
+display.o: display.c display.h
+	$(CC) -c $(FLAGS) display.c -o display.o $(LIBS) $(FLAGS)
 	
 callback.o: callback.c callback.h
 	$(CC) -c $(FLAGS) callback.c -o callback.o $(LIBS) $(FLAGS)
@@ -32,8 +30,11 @@ image.o: image.c image.h
 	
 texture.o: texture.c texture.h
 	$(CC) -c $(FLAGS)  texture.c -o texture.o $(LIBS) $(FLAGS)
+	
+axis.o: axis.c axis.h
+	$(CC) -c $(FLAGS) axis.c -o axis.o $(LIBS) $(FLAGS)
 
-.PHONY: play run clean dist
+.PHONY: play run clean 
 
 play:
 	./$(PROGRAM) 
@@ -42,8 +43,6 @@ run:
 	make && make play
 
 clean:
-	-rm -f $(OBJS) $(PROGRAM) *~
+	-rm -f *~ $(OBJS) $(PROGRAM) *~
 
-dist: clean
-	-tar -chvj -C .. -f ../$(PROGRAM).tar.bz2 $(PROGRAM)
 

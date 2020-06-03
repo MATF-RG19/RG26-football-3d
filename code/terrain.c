@@ -4,171 +4,134 @@
 void make_scene(void)
 {
   glPushMatrix(); 
-  glTranslatef(-15, 0, 0);
+  glTranslatef(-15, 0, -50);
   glEnable(GL_TEXTURE_2D);
 
   // Prednja strana scene
   glBindTexture(GL_TEXTURE_2D,texture_n[FRONT_SIDE_NUM]);
   glBegin(GL_POLYGON);
     glTexCoord2f(0,0);
-    glVertex3f(-250,-250,250);
+    glVertex3f(-EDGE,-EDGE,-EDGE);
     
     glTexCoord2f(1,0);
-    glVertex3f(-250,-250,-250);
+    glVertex3f(-EDGE,EDGE,-EDGE);
     
     glTexCoord2f(1,1);
-    glVertex3f(-250,250,-250);
+    glVertex3f(-EDGE,EDGE,EDGE);
     
     glTexCoord2f(0,1);
-    glVertex3f(-250,250,250);
+    glVertex3f(-EDGE,-EDGE,EDGE);
   glEnd();
   // Desna strana scene
   glBindTexture(GL_TEXTURE_2D,texture_n[RIGHT_SIDE_NUM]);
   glBegin(GL_POLYGON);
     glTexCoord2f(0,0);
-    glVertex3f(-250,250,-250);
+    glVertex3f(-EDGE,EDGE,-EDGE);
     
     glTexCoord2f(1,0);
-    glVertex3f(250,250,-250);
+    glVertex3f(EDGE,EDGE,-EDGE);
     
     glTexCoord2f(1,1);
-    glVertex3f(250,250,250);
+    glVertex3f(EDGE,EDGE,EDGE);
     
     glTexCoord2f(0,1);
-    glVertex3f(-250,250,250);
+    glVertex3f(-EDGE,EDGE,EDGE);
   glEnd();
   // Zadnja strana scene
   glBindTexture(GL_TEXTURE_2D,texture_n[BACK_SIDE_NUM]);
   glBegin(GL_POLYGON);
     glTexCoord2f(0,0);
-    glVertex3f(250,-250,-250);
+    glVertex3f(EDGE,EDGE,-EDGE);
     
     glTexCoord2f(1,0);
-    glVertex3f(250,-250,250);
+    glVertex3f(EDGE,-EDGE,-EDGE);
     
     glTexCoord2f(1,1);
-    glVertex3f(250,250,250);
+    glVertex3f(EDGE,-EDGE,EDGE);
     
     glTexCoord2f(0,1);
-    glVertex3f(250,250,-250);
+    glVertex3f(EDGE,EDGE,EDGE);
   glEnd();
   // Leva strana scene
   glBindTexture(GL_TEXTURE_2D,texture_n[LEFT_SIDE_NUM]);
   glBegin(GL_POLYGON);
-    glTexCoord2f(1,1);
-    glVertex3f(250,-250,-250);
-    
-    glTexCoord2f(0,1);
-    glVertex3f(-250,-250,-250);
-    
     glTexCoord2f(0,0);
-    glVertex3f(-250,-250,250);
+    glVertex3f(EDGE,-EDGE,-EDGE);
     
     glTexCoord2f(1,0);
-    glVertex3f(250,-250,250);
+    glVertex3f(-EDGE,-EDGE,-EDGE);
+    
+    glTexCoord2f(1,1);
+    glVertex3f(-EDGE,-EDGE,EDGE);
+    
+    glTexCoord2f(0,1);
+    glVertex3f(EDGE,-EDGE,EDGE);
   glEnd();
   // Donja strana scene
   glBindTexture(GL_TEXTURE_2D,texture_n[DOWN_SIDE_NUM]);
   glBegin(GL_POLYGON);
     glTexCoord2f(0,0); 
-    glVertex3f(-250,-250,-250);
+    glVertex3f(EDGE,-EDGE,-EDGE);
 
     glTexCoord2f(1,0); 
-    glVertex3f(250,-250,-250);
+    glVertex3f(EDGE,EDGE,-EDGE);
     
     glTexCoord2f(1,1);
-    glVertex3f(250,250,-250);
+    glVertex3f(-EDGE,EDGE,-EDGE);
     
     glTexCoord2f(0,1);
-    glVertex3f(-250,250,-250);
+    glVertex3f(-EDGE,-EDGE,-EDGE);
   glEnd();
   // Gornja strana scene
   glBindTexture(GL_TEXTURE_2D,texture_n[UP_SIDE_NUM]);
   glBegin(GL_POLYGON);
     glTexCoord2f(0,0);
-    glVertex3f(250,-250,250);
+    glVertex3f(-EDGE,-EDGE,EDGE);
     
     glTexCoord2f(1,0);
-    glVertex3f(-250,-250,250);
+    glVertex3f(-EDGE,EDGE,EDGE);
     
     glTexCoord2f(1,1);
-    glVertex3f(-250,250,250);
+    glVertex3f(EDGE,EDGE,EDGE);
     
     glTexCoord2f(0,1);
-    glVertex3f(250,250,250);
+    glVertex3f(EDGE,-EDGE,EDGE);
   glEnd();
 
   glDisable(GL_TEXTURE_2D);
   glPopMatrix();
 }
 
-void set_terrain(void)
+void make_goalkeeper(void)
 {
-    glEnable(GL_NORMALIZE);
-    
-    // Koordinatni sistem
-//     glPushMatrix();
-//         glTranslatef(35,0,-1);
-//         int len = 100;
-//         glDisable(GL_LIGHTING);
-//         glBegin(GL_LINES);
-//         
-//             glColor3f(1,0,0);
-//             glVertex3f(0,0,0);
-//             glVertex3f(len,0,0);
-// 
-//             glColor3f(0,1,0);
-//             glVertex3f(0,0,0);  
-//             glVertex3f(0,-len,0);
-// 
-//             glColor3f(0,0,1);
-//             glVertex3f(0,0,0);
-//             glVertex3f(0,0,len);
-//         glEnd();
-//         glEnable(GL_LIGHTING);
-//     glPopMatrix();
-//     
-//     // Drugi Koordinatni
-//     glPushMatrix();
-//         glTranslatef(-65,0,-1);
-//         int len1 = 100;
-//         glDisable(GL_LIGHTING);
-//         glBegin(GL_LINES);
-//         
-//             glColor3f(1,0,0);
-//             glVertex3f(0,0,0);
-//             glVertex3f(-len1,0,0);
-// 
-//             glColor3f(0,1,0);
-//             glVertex3f(0,0,0);  
-//             glVertex3f(0,len1,0);
-// 
-//             glColor3f(0,0,1);
-//             glVertex3f(0,0,0);
-//             glVertex3f(0,0,len1);
-//         glEnd();
-//         glEnable(GL_LIGHTING);
-//     glPopMatrix();
-    
     // Crtanje prepreke
     glPushMatrix();
     glEnable(GL_COLOR_MATERIAL);
+    glTranslatef(CONE_X, animation_parameter, CONE_Z);
     glColor3f(1,0.5,0);;
         glPushMatrix();
-            glTranslatef(-65, 0, -1);
             GLUquadricObj *quadratic = gluNewQuadric();
             gluCylinder(quadratic, 1.25, 0.25, 3.5, 32, 32);
         glPopMatrix();
         glPushMatrix();
-            glTranslatef(-65, 0, -1);
-            glScalef(3.25, 3.25, 0.2);
+            glScalef(3.25, 3.25, 0.325);
             glutSolidCube(1);
         glPopMatrix();
     glDisable(GL_COLOR_MATERIAL);
     glPopMatrix();
+}
+
+void set_terrain(void)
+{
+    glEnable(GL_NORMALIZE);
+    
+    //draw_axis();
     
     // Scena
     make_scene();
+    
+    // Prepreka
+    make_goalkeeper();
     
     // Crtanje trave
     glEnable(GL_TEXTURE_2D);
@@ -273,7 +236,7 @@ void set_terrain(void)
     
     //Crtanje prvog gola
     glPushMatrix();
-    glTranslatef(-1.5,0,0);
+    glTranslatef(-1.45,0,0);
         GLfloat ambient_light2[] =  {0.7f, 0.7f, 0.7f, 1.0f};
         GLfloat diffuse_light2[] =  {0.7f, 0.7f, 0.7f, 1.0f};
         GLfloat specular_light2[] = {1.0f, 1.0f, 1.0f, 1.0f};
@@ -425,7 +388,7 @@ void set_terrain(void)
 
     //Crtanje drugog gola, desna stativa
     glPushMatrix();
-    glTranslatef(3,0,0);
+    glTranslatef(2.85,0,0);
         glPushMatrix();
         glTranslatef(-104, 0, 0);
         glRotated(180, 0, 0, 1);
@@ -572,44 +535,312 @@ void set_terrain(void)
     glPopMatrix();
     
     // Crtanje donje ograde
-    glPushMatrix();
-        GLfloat ambient_light3[] = {0.4f, 0.4f, 0.4f, 1.0f};
-        GLfloat diffuse_light3[] = {0.4f, 0.4f, 0.4f, 1.0f};
-        GLfloat specular_light3[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+        
+        glTexCoord2f(0, 1);
+        glVertex3f(39.5, -32, -1);
+        
+        glTexCoord2f(0, 0);
+        glVertex3f(39.5, -32, 2);
+        
+        glTexCoord2f(32, 0);
+        glVertex3f(39.5, 32, 2);
+        
+        glTexCoord2f(32, 1);
+        glVertex3f(39.5, 32, -1);
+    glEnd();
+        
+    // Crtanje gornje ograde
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
 
-        // Postavljanje svojstava materijala
-        glMaterialfv(GL_FRONT, GL_AMBIENT, ambient_light3);
-        glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse_light3);
-        glMaterialfv(GL_FRONT, GL_SPECULAR, specular_light3);
-        glMateriali(GL_FRONT, GL_SHININESS, SHININESS);
+        glTexCoord2f(0, 1);
+        glVertex3f(-69.5, -32, -1);
+
+        glTexCoord2f(0, 0);
+        glVertex3f(-69.5, -32, 2);
+
+        glTexCoord2f(32, 0);
+        glVertex3f(-69.5, 32, 2);
+
+        glTexCoord2f(32, 1);
+        glVertex3f(-69.5, 32, -1);
+    glEnd();
+        
+    // Crtanje leve ograde
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+
+        glTexCoord2f(0, 1);
+        glVertex3f(39.5, -32, -1);
+
+        glTexCoord2f(0, 0);
+        glVertex3f(39.5, -32, 2);
+
+        glTexCoord2f(32, 0);
+        glVertex3f(-69.5, -32, 2);
+
+        glTexCoord2f(32, 1);
+        glVertex3f(-69.5, -32, -1);
+    glEnd();
     
-        glPushMatrix();
-            glTranslatef(39.375, 0, 0);
-            glScalef(0.25, 64, 2.1);
-            glutSolidCube(1);
-        glPopMatrix();
+    // Crtanje desne ograde
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+
+        glTexCoord2f(0, 1);
+        glVertex3f(39.5, 32, -1);
+
+        glTexCoord2f(0, 0);
+        glVertex3f(39.5, 32, 2);
+
+        glTexCoord2f(32, 0);
+        glVertex3f(-69.5, 32, 2);
+
+        glTexCoord2f(32, 1);
+        glVertex3f(-69.5, 32, -1);
+    glEnd();
+    
+    // Crtanje donje ograde, dupla
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
         
-        // Crtanje ornje ograde
-        glPushMatrix();
-            glTranslatef(-69.375, 0, 0);
-            glScalef(0.25, 64, 2.1);
-            glutSolidCube(1);
-        glPopMatrix();
+        glTexCoord2f(0, 1);
+        glVertex3f(39.25, -32, -1);
         
-        // Crtanje leve ograde
-        glPushMatrix();
-            glTranslatef(-15, -31.875, 0);
-            glScalef(109, 0.25, 2.1);
-            glutSolidCube(1);
-        glPopMatrix();
+        glTexCoord2f(0, 0);
+        glVertex3f(39.25, -32, 2);
         
-        // Crtanje desne ograde
-        glPushMatrix();
-            glTranslatef(-15, 31.875, 0);
-            glScalef(109, 0.25, 2.1);
-            glutSolidCube(1);
-        glPopMatrix();
+        glTexCoord2f(32, 0);
+        glVertex3f(39.25, 32, 2);
         
+        glTexCoord2f(32, 1);
+        glVertex3f(39.25, 32, -1);
+    glEnd();
+    
+    // Crtanje gornje ograde, dupla
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+
+        glTexCoord2f(0, 1);
+        glVertex3f(-69.25, -32, -1);
+
+        glTexCoord2f(0, 0);
+        glVertex3f(-69.25, -32, 2);
+
+        glTexCoord2f(32, 0);
+        glVertex3f(-69.25, 32, 2);
+
+        glTexCoord2f(32, 1);
+        glVertex3f(-69.25, 32, -1);
+    glEnd();
+    
+    // Crtanje leve ograde, dupla
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+
+        glTexCoord2f(0, 1);
+        glVertex3f(39.5, -31.75, -1);
+
+        glTexCoord2f(0, 0);
+        glVertex3f(39.5, -31.75, 2);
+
+        glTexCoord2f(32, 0);
+        glVertex3f(-69.5, -31.75, 2);
+
+        glTexCoord2f(32, 1);
+        glVertex3f(-69.5, -31.75, -1);
+    glEnd();
+    
+    // Crtanje desne ograde, dupla
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+
+        glTexCoord2f(0, 1);
+        glVertex3f(39.5, 31.75, -1);
+
+        glTexCoord2f(0, 0);
+        glVertex3f(39.5, 31.75, 2);
+
+        glTexCoord2f(32, 0);
+        glVertex3f(-69.5, 31.75, 2);
+
+        glTexCoord2f(32, 1);
+        glVertex3f(-69.5, 31.75, -1);
+    glEnd();
+    
+    // Crtanje donje ograde, vrh
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+        
+        glTexCoord2f(0, 1);
+        glVertex3f(39.5, -32, 2);
+        
+        glTexCoord2f(0, 0);
+        glVertex3f(39.25, -32, 2);
+        
+        glTexCoord2f(32, 0);
+        glVertex3f(39.25, 32, 2);
+        
+        glTexCoord2f(32, 1);
+        glVertex3f(39.5, 32, 2);
+    glEnd();
+    
+    // Crtanje gornje ograde, vrh
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+
+        glTexCoord2f(0, 1);
+        glVertex3f(-69.5, -32, 2);
+
+        glTexCoord2f(0, 0);
+        glVertex3f(-69.25, -32, 2);
+
+        glTexCoord2f(32, 0);
+        glVertex3f(-69.25, 32, 2);
+
+        glTexCoord2f(32, 1);
+        glVertex3f(-69.5, 32, 2);
+    glEnd();
+    
+    // Crtanje leve ograde, vrh
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+
+        glTexCoord2f(0, 1);
+        glVertex3f(39.5, -32, 2);
+
+        glTexCoord2f(0, 0);
+        glVertex3f(39.5, -31.75, 2);
+
+        glTexCoord2f(32, 0);
+        glVertex3f(-69.5, -31.75, 2);
+
+        glTexCoord2f(32, 1);
+        glVertex3f(-69.5, -32, 2);
+    glEnd();
+    
+    // Crtanje desne ograde, vrh
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[FANCE_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+
+        glTexCoord2f(0, 1);
+        glVertex3f(39.5, 32, 2);
+
+        glTexCoord2f(0, 0);
+        glVertex3f(39.5, 31.75, 2);
+
+        glTexCoord2f(32, 0);
+        glVertex3f(-69.5, 31.75, 2);
+
+        glTexCoord2f(32, 1);
+        glVertex3f(-69.5, 32, 2);
+    glEnd();
+    glDisable(GL_TEXTURE_2D);
+    
+
+    // Reklama, donja desna
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[ADD1_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+        
+        glTexCoord2f(0, 0);
+        glVertex3f(33.6, 8.5, -1);
+        
+        glTexCoord2f(0, 1);
+        glVertex3f(33.6, 8.5, 1);
+        
+        glTexCoord2f(11, 1);
+        glVertex3f(33.6, 30.5, 1);
+        
+        glTexCoord2f(11, 0);
+        glVertex3f(33.6, 30.5, -1);
+    glEnd();
+    
+     // Reklama, donja leva
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[ADD1_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+        
+        glTexCoord2f(0, 0);
+        glVertex3f(33.6, -8.5, -1);
+        
+        glTexCoord2f(0, 1);
+        glVertex3f(33.6, -8.5, 1);
+        
+        glTexCoord2f(11, 1);
+        glVertex3f(33.6, -30.5, 1);
+        
+        glTexCoord2f(11, 0);
+        glVertex3f(33.6, -30.5, -1);
+    glEnd();
+    
+    // Reklama, gornja desna
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[ADD_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+        
+        glTexCoord2f(0, 0);
+        glVertex3f(-63.6, 8.5, -1);
+        
+        glTexCoord2f(0, 1);
+        glVertex3f(-63.6, 8.5, 1);
+        
+        glTexCoord2f(11, 1);
+        glVertex3f(-63.6, 30.5, 1);
+        
+        glTexCoord2f(11, 0);
+        glVertex3f(-63.6, 30.5, -1);
+    glEnd();
+    
+     // Reklama, gornja leva
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texture_n[ADD_TEXTURE_NUM]);
+    glBegin(GL_POLYGON);
+        glNormal3f(0, 0, 1);
+        
+        glTexCoord2f(0, 0);
+        glVertex3f(-63.6, -8.5, -1);
+        
+        glTexCoord2f(0, 1);
+        glVertex3f(-63.6, -8.5, 1);
+        
+        glTexCoord2f(11, 1);
+        glVertex3f(-63.6, -30.5, 1);
+        
+        glTexCoord2f(11, 0);
+        glVertex3f(-63.6, -30.5, -1);
+    glEnd();
+    glDisable(GL_TEXTURE_2D);
+    
     glPopMatrix();
     
     glDisable(GL_NORMALIZE);

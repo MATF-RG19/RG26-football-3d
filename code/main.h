@@ -3,7 +3,7 @@
 
 #include <GL/freeglut.h>
 #include <GL/glut.h>
-#include "base.h"
+#include "display.h"
 #include "ball.h"
 #include "camera.h"
 #include "callback.h"

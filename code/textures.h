@@ -13,6 +13,12 @@
 #define UP_SIDE_FILE "textures/up.bmp"
 #define DOWN_SIDE_FILE "textures/down.bmp"
 #define SOIL_FILE "textures/soil.bmp"
+#define FANCE_FILE "textures/fance.bmp"
+#define ADD_FILE "textures/add.bmp"
+#define ADD1_FILE "textures/add1.bmp"
+#define START_GAME_FILE "textures/start_screen.bmp"
+#define GOOAL_FILE "textures/gooal.bmp"
+#define GAME_OVER_FILE "textures/game_over.bmp"
 
 #define BALL_TEXTURE_NUM 0
 #define PITCH_TEXTURE_NUM 1
@@ -23,9 +29,15 @@
 #define UP_SIDE_NUM 6
 #define DOWN_SIDE_NUM 7
 #define SOIL_TEXTURE_NUM 8
+#define FANCE_TEXTURE_NUM 9
+#define ADD_TEXTURE_NUM 10
+#define ADD1_TEXTURE_NUM 11
+#define START_SCREEN_NUM 12
+#define GOOAL_NUM 13
+#define GAME_OVER_NUM 14
 
 
-GLuint texture_n[9];
+GLuint texture_n[15];
 void init_textures();
 
 #endif

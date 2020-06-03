@@ -8,10 +8,10 @@ void set_callback(void)
     glutKeyboardUpFunc(on_button_released);
     glutReshapeFunc(on_reshape);
     glutDisplayFunc(on_display);
+    glutDisplayFunc(start_game);
     
     // Upravljanje kamerom pomocu misa
     glutPassiveMotionFunc(on_mouse_motion);
-    glutSetCursor(GLUT_CURSOR_NONE);
     
     // Na pocetku nije nista pritisnuto
     keyboard = EMPTY;
@@ -21,7 +21,7 @@ void on_idle(void)
 {
     // Reset kamere i kraj animacije
     if (keyboard & RESET){
-        if (reset_camera() == RES_END){
+        if (reset_camera() == RESTART_OK){
             keyboard &= ~RESET;
         }
     }
@@ -81,6 +81,17 @@ void on_button_pressed(unsigned char key, int x, int y)
     case ESC:
         // Prekid programa
         exit(EXIT_SUCCESS);
+        
+    // Pokretanje
+    case 'g':
+    case 'G':
+        if (!start && !end) {
+            glutDisplayFunc(on_display);
+            glutTimerFunc(TIMER_INTERVAL, on_timer, TIMER_ID);
+            glob_time.diff = 1;
+            start = 1;
+        }
+        break;
         
     // Lopta se rotira levo, desno
     case 'a':
@@ -203,8 +214,41 @@ void on_button_released(unsigned char key, int x, int y)
     }
 }
 
-float camera_x = 0; 
-float camera_y = 0;
+// Globalno vreme
+void global_time(void)
+{
+    glob_time.past = 0;
+    glob_time.elapse = glutGet(GLUT_ELAPSED_TIME);
+    glob_time.diff = glob_time.elapse - glob_time.past;
+    glob_time.past = glob_time.elapse;
+}
+
+ind = MOVE_RIGHT;
+// Funckija kretanja golmana
+void on_timer(int id)
+{
+    switch(ind) {
+        // Kupa je desno, idi levo
+        case MOVE_RIGHT:
+            if(animation_parameter < 5)
+                animation_parameter += 0.15;
+            else
+                ind = MOVE_LEFT;
+            break;
+        // Kupa je levo, vradi se desno
+        case MOVE_LEFT:
+            if(animation_parameter > -5)
+                animation_parameter -= 0.15;
+            else
+                ind = MOVE_RIGHT;
+            break;
+    }
+    
+    glutPostRedisplay();
+    if (start && !end) {
+        glutTimerFunc(FPS, on_timer, TIMER_ID);
+    }
+}
 
 // Funkcija za upravljane kamerom pomocu misa
 void on_mouse_motion(int x, int y)
@@ -213,6 +257,9 @@ void on_mouse_motion(int x, int y)
     float dy;
     int curr_win_width = glutGet(GLUT_WINDOW_WIDTH);
     int curr_win_height = glutGet(GLUT_WINDOW_WIDTH);
+    
+    // Sklanjamo kursor 
+    glutSetCursor(GLUT_CURSOR_NONE);
     
     // Ako se mis ne mrda
     if (x == curr_win_width/2 && y == curr_win_height/2) 
@@ -263,7 +310,7 @@ void on_display(void)
     glLightiv(GL_LIGHT0, GL_POSITION, light_position);
     
     // Racunanje pozicije kamere
-    repair_camera();
+    update_camera();
     
     // Postavljanje vidnih parametara
     gluLookAt(camera.x, camera.y, camera.z, 
