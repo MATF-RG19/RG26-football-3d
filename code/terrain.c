@@ -771,16 +771,16 @@ void set_terrain(void)
         glNormal3f(0, 0, 1);
         
         glTexCoord2f(0, 0);
-        glVertex3f(33.6, 8.5, -1);
+        glVertex3f(33.6, 30.5, -1);
         
         glTexCoord2f(0, 1);
-        glVertex3f(33.6, 8.5, 1);
-        
-        glTexCoord2f(11, 1);
         glVertex3f(33.6, 30.5, 1);
         
+        glTexCoord2f(11, 1);
+        glVertex3f(33.6, 8.5, 1);
+        
         glTexCoord2f(11, 0);
-        glVertex3f(33.6, 30.5, -1);
+        glVertex3f(33.6, 8.5, -1);
     glEnd();
     
      // Reklama, donja leva
@@ -828,16 +828,16 @@ void set_terrain(void)
         glNormal3f(0, 0, 1);
         
         glTexCoord2f(0, 0);
-        glVertex3f(-63.6, -8.5, -1);
+        glVertex3f(-63.6, -30.5, -1);
         
         glTexCoord2f(0, 1);
-        glVertex3f(-63.6, -8.5, 1);
-        
-        glTexCoord2f(11, 1);
         glVertex3f(-63.6, -30.5, 1);
         
+        glTexCoord2f(11, 1);
+        glVertex3f(-63.6, -8.5, 1);
+        
         glTexCoord2f(11, 0);
-        glVertex3f(-63.6, -30.5, -1);
+        glVertex3f(-63.6, -8.5, -1);
     glEnd();
     glDisable(GL_TEXTURE_2D);
     
