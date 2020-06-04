@@ -88,8 +88,8 @@ void on_button_pressed(unsigned char key, int x, int y)
         if (!start && !end) {
             glutDisplayFunc(on_display);
             glutTimerFunc(TIMER_INTERVAL, on_timer, TIMER_ID);
-            glob_time.diff = 1;
-            start = 1;
+            glob_time.diff = START;
+            start = START;
         }
         break;
         
@@ -217,7 +217,7 @@ void on_button_released(unsigned char key, int x, int y)
 // Globalno vreme
 void global_time(void)
 {
-    glob_time.past = 0;
+    glob_time.past = END;
     glob_time.elapse = glutGet(GLUT_ELAPSED_TIME);
     glob_time.diff = glob_time.elapse - glob_time.past;
     glob_time.past = glob_time.elapse;
