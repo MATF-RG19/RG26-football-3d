@@ -8,7 +8,7 @@ Cilj je izbeci prepreku koja se krece i postignuti gol.
 
 :one: Pozicionirati se u code folder <br>
 :two: Komanda za pokretanje igre je 
-`make play`
+`make play` <br>
 :three: Komanda za kompilaciju i pokretanje je 
 `make run`
 <hr>
