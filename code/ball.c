@@ -55,7 +55,12 @@ void cone_colission(void) {
         glutDisplayFunc(game_over);
         glutPostRedisplay();
         glob_time.diff = END;
+        // Vrati loptu na pocekat
+        make_ball();
+        set_ball();
+        make_camera();
     }
+    
 }
 
 void ball_forward(void)
@@ -132,6 +137,10 @@ void ball_forward(void)
         start = END;
         glutDisplayFunc(gooal);
         glob_time.diff = END;
+        // Vrati loptu na pocekat
+        make_ball();
+        set_ball();
+        make_camera();
     }
     cone_colission();
 }
@@ -210,6 +219,11 @@ void ball_backward(void)
         start = END;
         glutDisplayFunc(gooal);
         glob_time.diff = END;
+        set_ball();
+        // Vrati loptu na pocekat
+        make_ball();
+        set_ball();
+        make_camera();
     }
     
     cone_colission();
