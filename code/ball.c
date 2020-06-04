@@ -219,7 +219,6 @@ void ball_backward(void)
         start = END;
         glutDisplayFunc(gooal);
         glob_time.diff = END;
-        set_ball();
         // Vrati loptu na pocekat
         make_ball();
         set_ball();
