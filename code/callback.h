@@ -20,6 +20,10 @@
 #define START 1
 #define END 0
 
+// Za animaciju kupe
+#define GOALPOST 5
+#define ANIM_SPEED 0.15
+
 // Distanca sa preprekom
 #define EPS_1 4
 

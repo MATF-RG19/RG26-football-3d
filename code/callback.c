@@ -230,15 +230,15 @@ void on_timer(int id)
     switch(ind) {
         // Kupa je desno, idi levo
         case MOVE_RIGHT:
-            if(animation_parameter < 5)
-                animation_parameter += 0.15;
+            if(animation_parameter < GOALPOST)
+                animation_parameter += ANIM_SPEED;
             else
                 ind = MOVE_LEFT;
             break;
         // Kupa je levo, vradi se desno
         case MOVE_LEFT:
-            if(animation_parameter > -5)
-                animation_parameter -= 0.15;
+            if(animation_parameter > -GOALPOST)
+                animation_parameter -= ANIM_SPEED;
             else
                 ind = MOVE_RIGHT;
             break;

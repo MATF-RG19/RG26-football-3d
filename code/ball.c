@@ -43,8 +43,8 @@ void set_ball(void)
 }
 
 // Kolizija sa preprekom
-void cone_colission(void) {
-    
+void cone_colission(void) 
+{
     float d1 = powf((CONE_X - ball.x), 2);
     float d2 = powf((animation_parameter - ball.y), 2);
 
@@ -60,7 +60,6 @@ void cone_colission(void) {
         set_ball();
         make_camera();
     }
-    
 }
 
 void ball_forward(void)
