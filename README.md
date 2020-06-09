@@ -6,10 +6,13 @@ Cilj je izbeci prepreku koja se krece i postignuti gol.
 
 ### :wrench: Upustovo za pokretanje igre iz terminala :wrench: <br>
 
-:one: Pozicionirati se u code folder <br>
-:two: Komanda za pokretanje igre je 
+:one: Za kompilaciju OpenGL programa na operativnom sistemu Linux,
+potrebno je instalisati: <br> 
+`apt-get install freeglut3-dev` novije vrezije sistema zahtevaju `binutils-gold` <br>
+:two: Pozicionirati se u code folder <br>
+:three: Komanda za pokretanje igre je 
 `make play` <br>
-:three: Komanda za kompilaciju i pokretanje je 
+:four: Komanda za kompilaciju i pokretanje je 
 `make run`
 <hr>
 
